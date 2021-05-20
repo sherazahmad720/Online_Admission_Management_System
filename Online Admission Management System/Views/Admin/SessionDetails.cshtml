@@ -1,0 +1,116 @@
+﻿@{
+
+    ViewBag.Title = "Session";
+    Layout = "~/Views/Shared/_layout_Admin.cshtml";
+}
+
+<h2>Session</h2>
+<br />
+<br />
+<body class="">
+    
+    <form action="/Admin/SessionDetails" method="post">
+        <div class="row alert alert-success">
+            <div class="col-lg-3 text-right"><span class="input-sm">Create a New Session</span></div>
+            <div class="col-lg-3 text-left"><input class="form-control input-sm" type="Text" name="SessionField" value="" placeholder="Enter Session Name" /></div>
+            <div class="col-lg-3"><input class="input-lg  btn-success" type="submit" name="Submitbtn" value="Create" /></div>
+            <div class="col-lg-3">
+                @if (@ViewBag.Message == "Session Field Must be Filled")
+                {
+                    <span class="text-danger">@ViewBag.Message</span>
+
+                }
+                else
+                {
+                    <span class="text-success">@ViewBag.Message</span>
+
+                }
+            </div>
+
+        </div>
+
+        <br />
+        <div class="row alert alert-info">
+            <div class="col-lg-3 text-right">Current Active Session:</div>
+            <div class="col-lg-3 text-left">
+
+
+                @{
+                    try
+                    {
+                        foreach (var Row in Model.Rows)
+                        {
+                            if (@Row["SessionStatus"].ToString() == "Active")
+                            {
+                                <span>@Row["SessionName"].ToString()</span>
+
+                            }
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                }
+            </div>
+        </div>
+        <br />
+
+
+        <div class="row alert alert-success">
+            <div class="col-lg-3 text-right"><span class="input-sm">Update Session</span></div>
+            <div class="col-lg-3 ">
+                <select name="CurrentSession">
+
+
+                    @{
+                        try
+                        {
+
+
+                            foreach (var Row in Model.Rows)
+                            {
+                                if (@Row["SessionStatus"].ToString() == "Active")
+                                {
+                                    <option value="@Row["SessionName"].ToString()" selected>@Row["SessionName"].ToString()</option>
+                                }
+
+                            }
+                            foreach (var Row in Model.Rows)
+                            {
+                                if (@Row["SessionStatus"].ToString() != "Active")
+                                {
+                                    <option value="@Row["SessionName"].ToString()">@Row["SessionName"].ToString()</option>
+                                }
+
+                            }
+
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="col-lg-3"><input class="input-lg  btn-info" type="submit" name="Submitbtn" value="Update" /></div>
+            <div class="col-lg-3 "><span class="text-success">@ViewBag.Update</span></div>
+            <div></div>
+
+
+
+        </div>
+
+
+
+    </form>
+
+
+
+
+
+</body>

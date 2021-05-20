@@ -1,0 +1,48 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+
+    Layout = "~/Views/Shared/_layout_Admin.cshtml";
+}
+<div class="row">
+    <div class="col-lg-6"><h2>Welcome to Admin Panel</h2></div>
+    <div class="col-lg-6  progress-striped">
+
+        <h4>
+            Current Active Session is
+
+            @foreach (var Row in Model.Tables["Table2"].Rows)
+            {
+                if (@Row["SessionStatus"].ToString() == "Active")
+                {
+                    <span class="text-info">@Row["SessionName"].ToString()</span>
+
+                }
+            }
+
+
+        </h4>
+    </div>
+</div>
+
+
+
+        <div class="row alert alert-success">
+    <div class="col-lg-4"> <h2 class="text-warning"> Total Registered :@Model.Tables["Table1"].Rows[0]["TotalStudent"]</h2></div>
+    <div class="col-lg-4">  <h2 class="text-primary"> Males :@Model.Tables["Table1"].Rows[0]["Male"]</h2></div>
+    <div class="col-lg-4">  <h2 class="text-danger"> Females :@Model.Tables["Table1"].Rows[0]["Female"]</h2></div>
+
+</div>
+        <br />
+        <div class="row alert alert-info"  >
+    <div class="col-lg-3 "> <h2 class="text-warning"> Total Admission in Current Session :@Model.Tables["Table1"].Rows[0]["TotalAdmission"]</h2></div>
+    <div class="col-lg-3">  <h2 class="text-success"> Accepted :@Model.Tables["Table1"].Rows[0]["TotalAccepted"]</h2></div>
+    <div class="col-lg-3">  <h2 class="text-danger"> Rejected :@Model.Tables["Table1"].Rows[0]["TotalRejected"]</h2></div>
+    <div class="col-lg-3">  <h2 class="text-primary"> Pendings :@Model.Tables["Table1"].Rows[0]["Pendings"]</h2></div>
+</div>
+
+
+
+        <div class="text-center">@ViewBag.Admin</div>
+

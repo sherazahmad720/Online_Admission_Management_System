@@ -1,0 +1,226 @@
+﻿@using System.Data;
+@Model
+@{
+    ViewBag.Title = "StudentProfile";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>StudentProfile</h2>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Admission</title>
+</head>
+<body>
+
+
+    <form action="/Admin/Admission_Update" method="post" class="">
+        <input type="text" name="StudentID" value="@Model.Rows[0]["Student_Id"].ToString()"  hidden/>
+        <div class="row">
+            <div class="col-lg-6">
+                
+               
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Full Name</span></div>
+                    <div class="col-lg-4"><input required class="form-control input-sm" data-val="true" data-val-required="Full Name is Required" type="text" name="Name" value="@Model.Rows[0]["Name"].ToString()" placeholder=" enter your full name here" /></div>
+                    <div class="col-lg-4">@Html.ValidationMessage("Name")</div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Father Name</span></div>
+                    <div class="col-lg-4"><input class="form-control input-sm" data-val="true" data-val-required="Father Name is Required" type="text" name="FatherName" value="@Model.Rows[0]["Father_Name"].ToString()" placeholder=" enter your father name here" /></div>
+                    <div class="col-lg-4">@Html.ValidationMessage("FatherName")</div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Select Gender</span></div>
+                    <div class="col-lg-4">
+                        <select class="input-sm form-control " data-val="true" data-val-required="Gender Is Required" value="@Model.Rows[0]["Gender"].ToString()" name="Gender">
+                            <option value="@Model.Rows[0]["Gender"].ToString()" selected>@Model.Rows[0]["Gender"].ToString()</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4">@Html.ValidationMessage("Gender")</div>
+                </div>
+                <br />
+                
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Date Of Birth</span></div>
+                    <div class="col-lg-4"><input class="form-control input-sm" data-val="true" data-val-required="Date of Birth Is Required" type="date" value="@Convert.ToDateTime(Model.Rows[0]["DOB"]).ToString("yyyy-MM-dd")" name="DOB" placeholder="Select DOB" /></div>
+                    <div class="col-lg-4">@Html.ValidationMessage("DOB")</div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Nationality</span></div>
+                    <div class="col-lg-4"><input class="form-control input-sm" data-val="true" data-val-required="Nationality Is Required" type="text" name="Nationality" value="@Model.Rows[0]["Nationality"].ToString()" placeholder="nationality" /></div>
+                    <div class="col-lg-4">@Html.ValidationMessage("Nationality")</div>
+                </div>
+            
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Countary</span></div>
+                    <div class="col-lg-4">
+                        <select class="input-sm form-control" data-val="true" data-val-required="Country is Required" name="Country" value="@Model.Rows[0]["Country"].ToString()">
+                            <option value="pakistan" selected>
+                                @Model.Rows[0]["Country"].ToString()
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4">@Html.ValidationMessage("Country")</div>
+                </div>
+                
+               
+
+            </div>
+            <div class="col-lg-6">
+
+                
+               
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Postal Address</span></div>
+                    <div class="col-lg-4"><input class="form-control input-sm" data-val="true" data-val-required="Postal Address is Required" type="text" value="@Model.Rows[0]["Postal_Address"].ToString()" name="postal_address" placeholder="Postal Address" /></div>
+                    <div class="col-lg-4">@Html.ValidationMessage("Postal_Address")</div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Permanent Address</span></div>
+                    <div class="col-lg-4"><input class="form-control input-sm" type="text" name="Permanent_Address" value="@Model.Rows[0]["permanent_Address"].ToString()" placeholder="permanent address" /></div>
+                    <div class="col-lg-4"></div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Phone Number</span></div>
+                    <div class="col-lg-4"><input class="form-control input-sm" type="text" name="Phone_Number" value="@Model.Rows[0]["Phone_number"].ToString()" placeholder=" phone number" /></div>
+                    <div class="col-lg-4"></div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Mobile Number</span></div>
+                    <div class="col-lg-4"><input class="form-control input-sm" type="text" name="Mobile_Number" value="@Model.Rows[0]["Mobile_Number"].ToString()"/></div>
+                    @*<div class="col-lg-4">@Html.TextBox("Mobile_Number","@Model.Rows[0]["Province"]", new { @class = "input-sm form-control", data_val = "true", data_val_required = "Mobile number is Required", data_val_regex_pattern = "^[0-9]{11}$", data_val_regex = "Invalid Contact Number" })</div>*@
+                    <div class="col-lg-4">@Html.ValidationMessage("Mobile_Number")</div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Email</span></div>
+                    <div class="col-lg-4"><input required class="form-control input-sm" data-val="true" data-val-required="Email is Required" ,data-val-email="Invalid Email" type="email" name="Email" value="@Model.Rows[0]["Email"].ToString()" placeholder="Email" /></div>
+                    <div class="col-lg-4">@Html.ValidationMessage("Email") @ViewBag.EmailError</div>
+                    
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class=" input-sm">Province</span></div>
+                    <div class="col-lg-4">
+                        <select class="input-sm form-control" name="Province">
+                            <option value="@Model.Rows[0]["Province"].ToString()" selected>@Model.Rows[0]["Province"].ToString()</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Sindh">Sindh</option>
+                            <option value="Blochistan">Blochistan</option>
+                            <option value="KPK">KPK</option>
+                            <option value="Gilgat">Gilgat</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4"></div>
+                </div>
+                <br />
+                
+
+
+
+            </div>
+             </div>
+        <br />
+        <div class="row">
+            <div class="row"><h4>Educationala Information</h4></div>
+            <br />
+            <h4>Matriculation</h4>
+            <div class="row">
+                <table border="1">
+
+                    <tr>
+                        <th>School Name</th>
+                        <th>Board RollNumber</th>
+                        <th>Obtained Marks</th>
+                        <th>Total Marks</th>
+                        <th>Passing Year</th>
+                        <th>Board</th>
+                    </tr>
+                    <tr>
+                        <td><input type="Text" name="m_school" value="@Model.Rows[0]["Matric_School"]" /></td>
+                        <td><input type="Text" name="m_roll" value="@Model.Rows[0]["Matric_rollnumber"]" /></td>
+                        <td><input type="Text" name="m_obtained" value="@Model.Rows[0]["Matric_obtained"]" /></td>
+                        <td><input type="Text" name="m_total" value="@Model.Rows[0]["Matric_total"]" /></td>
+                        <td><input type="Text" name="m_passing" value="@Model.Rows[0]["Matric_passingYear"]" /></td>
+                        <td><input type="Text" name="m_board" value="@Model.Rows[0]["Matric_board"]" /></td>
+                    </tr>
+                </table>
+            </div>
+            <h4>Intermediate</h4>
+            <div class="row">
+                <table border="1">
+
+                    <tr>
+                        <th>College Name</th>
+                        <th>Board RollNumber</th>
+                        <th>Obtained Marks</th>
+                        <th>Total Marks</th>
+                        <th>Passing Year</th>
+                        <th>Board</th>
+                    </tr>
+                    <tr>
+                        <td><input type="Text" name="i_college" value="@Model.Rows[0]["Inter_college"]" /></td>
+                        <td><input type="Text" name="i_roll" value="@Model.Rows[0]["Inter_rollnumber"]" /></td>
+                        <td><input type="Text" name="i_obtained" value="@Model.Rows[0]["Inter_obtained"]" /></td>
+                        <td><input type="Text" name="i_total" value="@Model.Rows[0]["Inter_total"]" /></td>
+                        <td><input type="Text" name="i_passing" value="@Model.Rows[0]["Inter_passingYear"]" /></td>
+                        <td><input type="Text" name="i_board" value="@Model.Rows[0]["Inter_board"]" /></td>
+                    </tr>
+                </table>
+            </div>
+            <br />
+            <div class="row">
+                
+                <div class="col-sm-3">  <h4>Graduation</h4> </div>
+                <div class="col-sm-3">
+                
+                </div>
+            </div>
+
+
+            <div class="row">
+                <table border="1">
+
+                    <tr>
+                        <th>College/University Name</th>
+                        <th>Board RollNumber</th>
+                        <th>Obtained Marks</th>
+                        <th>Total Marks</th>
+                        <th>Passing Year</th>
+                        <th>Board/University</th>
+
+                    </tr>
+                    <tr>
+                        <td><input type="Text" name="g_uni" value="@Model.Rows[0]["Gradu_Uni"]" /></td>
+                        <td><input type="Text" name="g_roll" value="@Model.Rows[0]["Gradu_rollnumber"]" /></td>
+                        <td><input type="Text" name="g_obtained" value="@Model.Rows[0]["Gradu_obtained"]" /></td>
+                        <td><input type="Text" name="g_total" value="@Model.Rows[0]["Gradu_total"]" /></td>
+                        <td><input type="Text" name="g_passing" value="@Model.Rows[0]["Gradu_passingYear"]" /></td>
+                        <td><input type="Text" name="g_board" value="@Model.Rows[0]["Gradu_board"]" /></td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br />
+        <br />  
+        <div class="justify-content-center"><input class="btn btn-block btn-success" type="submit" name="AdmitBtn" value="Update" /></div>
+    </form>
+    @section Validation{
+
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
+    }
+</body>
+</html>

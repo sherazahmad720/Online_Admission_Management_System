@@ -1,0 +1,63 @@
+﻿
+@{
+    
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_layout_Home.cshtml";
+}
+
+<h2 class="text-center mr-md-3">Login</h2>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    
+    <form action="/Home/Login" method="post" class="text-center ">
+        <div>@ViewBag.Registration</div>
+         <div>@ViewBag.Error</div>
+        <br />
+        <div class="row">
+            <div class="col-sm-5 text-right">  <span class="btn-lg ">Email</span></div> 
+            <div><input type="Email" name="Email" placeholder="Email Here" class="btn-lg col-sm-5" data-val="true" , data-val-required="Please Enter Email" data-val-email="Please Enter Valid Email" required /></div>
+            <div class="col-sm-2">@Html.ValidationMessage("Email") </div>
+        
+        </div>
+        
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-sm-5 text-right">
+                <span class="btn-lg">Password</span>
+            </div><div>
+                      <input type="password" name="password" placeholder="Password Here" class="btn-lg col-sm-5" data-val="true" data-val-required="Please Enter Password" required />
+            </div>
+            <div class="col-sm-2">@Html.ValidationMessage("password")</div>
+        </div>
+       
+       
+        
+        <br />
+        <br />
+        <input type="submit" name="LoginBtn" value="Login" class="btn-lg btn-success" />
+        <br />
+        <br />
+
+        <a class="btn btn-warning" href="/Home/Registration">Have you not an account?? <br /><b>Register Yourself</b> </a>
+        <br />
+        <br />
+        <a name="" class=" btn btn-info" href="/Home/NoticeBoard">See Notice Board</a>
+      
+       
+    </form>
+  @section Validation{
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+   
+
+}
+
+</body>
+</html>
+

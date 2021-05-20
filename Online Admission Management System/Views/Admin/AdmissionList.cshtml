@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "AdmissionList";
+    Layout = "~/Views/Shared/_layout_Admin.cshtml";
+}
+
+<h2>Admission List</h2>
+
+<head>
+
+    <title>Admission List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="text-center"> <span class="text-success">@ViewBag.admission</span>
+        <br />
+        <span  class="text-success">@ViewBag.mail</span>  
+        <br />
+       </div>
+    <table class="table table-striped" border="1">
+        <thead>
+            <tr>
+                <th>Admission No.</th>
+                <th>Student Name</th>
+                <th>Study Level</th>
+                <th>Session</th>
+                <th>Status</th>
+                <th>Program</th>
+                <th>Percentage</th>
+             
+                <th>Reject</th>
+                <th>Accept</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @{
+                try
+                {
+                    foreach (var Row in Model.Rows)
+                    {
+                        if (@Row["Status"].ToString() == "Pending")
+                        {
+                            <tr>
+
+                                <td>@Row["AdmissionNO"].ToString()</td>
+                                <td>@Row["Name"].ToString()</td>
+                                <td>@Row["StudyLevel"].ToString()</td>
+                                <td>@Row["SessionName"].ToString()</td>
+                                <td>@Row["Status"].ToString()</td>
+                                <td>@Row["programName"].ToString()</td>
+                                <td>@Row["LastDegreePercentage"].ToString()%</td>
+                               
+                                <td class="text-center"><a href="/Admin/AdmissionStatus?AdmissionNO=@Row["AdmissionNO"].ToString()&AdmissionStatus=Rejected&Email=@Row["Email"].ToString()"><i class="fa fa-times text-danger"></i></a></td>
+
+                                <td class="text-center"><a href="/Admin/AdmissionStatus?AdmissionNO=@Row["AdmissionNO"].ToString()&AdmissionStatus=Accepted&Email=@Row["Email"].ToString()"><i class="fa fa-check text-success"></i></a></td>
+                                <td class="text-center"><a href="/Admin/StudentView/@Row["Student_Id"]"><i class="fa fa-eye"></i></a></td>
+                            </tr>
+                        }
+
+                    }
+                    foreach (var Row in Model.Rows)
+                    {
+                        if (@Row["Status"].ToString() == "Accepted")
+                        {
+                            <tr>
+
+                                <td>@Row["AdmissionNO"].ToString()</td>
+                                <td>@Row["Name"].ToString()</td>
+                                <td>@Row["StudyLevel"].ToString()</td>
+                                <td>@Row["SessionName"].ToString()</td>
+                                <td>@Row["Status"].ToString()</td>
+                                <td>@Row["programName"].ToString()</td>
+                                <td>@Row["LastDegreePercentage"].ToString()%</td>
+                               
+                                <td class="text-center"></td>
+                                
+                                <td class="text-center">Accepted</td>
+                                <td class="text-center"><a href="/Admin/StudentView/@Row["Student_Id"]"><i class="fa fa-eye"></i></a></td>
+                            </tr>
+
+                        }
+
+
+                    }
+                    foreach (var Row in Model.Rows)
+                    {
+
+                        if (@Row["Status"].ToString() == "Rejected")
+                        {
+                            <tr>
+
+                                <td>@Row["AdmissionNO"].ToString()</td>
+                                <td>@Row["Name"].ToString()</td>
+                                <td>@Row["StudyLevel"].ToString()</td>
+                                <td>@Row["SessionName"].ToString()</td>
+                                <td>@Row["Status"].ToString()</td>
+                                <td>@Row["programName"].ToString()</td>
+                                <td>@Row["LastDegreePercentage"].ToString()%</td>
+                            
+                                <td class="text-center">Rejected</td>
+                                <td class="text-center"></td>
+                                <td class="text-center"><a href="/Admin/StudentView/@Row["Student_Id"]"><i class="fa fa-eye"></i></a></td>
+                               
+                            </tr>
+
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    //throw;
+                }
+
+
+            }
+
+        </tbody>
+
+    </table>
+
+
+
+
+
+</body>

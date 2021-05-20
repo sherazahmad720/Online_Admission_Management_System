@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "OverallList";
+    Layout = "~/Views/Shared/_layout_Admin.cshtml";
+}
+
+<h2>OverallList</h2>
+
+<body>
+    <form action="/Admin/CreateReport" method="post">
+        <div class="row">
+            <div class="col-lg-4">
+                <label>Enter Title</label>
+            </div>
+            <div class="col-lg-4">
+                <input data-val="true" data-val-required="Enter Title" type="text" name="Title" value=" " />
+            </div>
+            <div class="col-lg-4">
+                @Html.ValidationMessage("Title")
+            </div>
+
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-4">
+                <label>Enter Description</label>
+            </div>
+            <div class="col-lg-4">
+                <input data-val="true" data-val-required="Enter Description" type="text" name="Description" value=" " />
+            </div>
+            <div class="col-lg-4">
+               @Html.ValidationMessage("Description")
+            </div>
+        </div>
+        <br />
+        <div class="row">
+
+            <div class="col-lg-4">Select Session</div>
+
+            <div class="col-lg-4">
+                <select name="Session">
+
+                    @try
+                    {
+                        foreach (var Row in Model.Rows)
+                        {
+
+
+                            <option value="@Row["SessionName"].ToString()">@Row["SessionName"].ToString()</option>
+
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+
+
+                </select>
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-4">Select Category</div>
+            <div class="col-lg-4">
+                <select name="Category">
+                    <option value="All">All Applied</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Accepted">Accepted</option>
+                </select>
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-3"><input class="input-lg  btn-info" type="submit" name="Submitbtn" value="Create" /></div>
+        </div>
+        <div class="col-lg-3 "><span class="text-success">@ViewBag.Update</span></div>
+    </form>
+    @section Validation{
+
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
+    }
+</body>

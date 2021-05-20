@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -Star University of Pakistan</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <style>
+        .navbar-fixed-left {
+            width: 140px;
+            position: fixed;
+            border-radius: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class=" navbar-inverse navbar-fixed-top bg-dark ">
+        <div class="container">
+            <div class="navbar-header text-danger">
+
+                @Html.ActionLink("Star University Of Pakistan", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand " })
+                @Html.ActionLink("Notification", "NotificationList", "Admin", new { area = "" }, new { @class = "navbar-brand " })
+                @Html.ActionLink("Student List", "StudentList", "Admin", new { area = "" }, new { @class = "navbar-brand " })
+                @Html.ActionLink("Session", "SessionDetails", "Admin", new { area = "" }, new { @class = "navbar-brand " })
+                @Html.ActionLink("Admission List", "AdmissionList", "Admin", new { area = "" }, new { @class = "navbar-brand " })
+                @Html.ActionLink("Merit List", "MeritLists", "Admin", new { area = "" }, new { @class = "navbar-brand " })
+                <a class="navbar-brand justify-content-end" href="/Admin/Logout">Log Out</a>
+                
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav"></ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Sherazi</p>
+        </footer>
+    </div>
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+   
+    @RenderSection("Validation", false)
+</body>
+</html>

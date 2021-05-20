@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "AdmissionStatus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Admission Status</h2>
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+    <div>If you Qualify in more than one program then select a program by clicking on check icon in Enroll Column </div>
+    <div class="danger"><h6 class="text-danger">Note: If You Select a Program You Can't Change it</h6></div>
+    <div class="text-center"> @ViewBag.EmailError @ViewBag.delete @ViewBag.update</div>
+    <table class="table table-striped" border="1">
+        <thead>
+            <tr>
+                <th>Admission No.</th>
+                
+                <th>Study Level</th>
+                <th>Session</th>
+                <th>Status</th>
+                <th>Program</th>
+                <th>Qualify</th>
+                <th>Enrolled</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+
+            @{
+                try
+                {
+                    foreach (var Row in Model.Rows)
+                    {
+                        if(@Row["Enroll"].ToString() != "No"){
+
+                        <tr>
+
+                            <td>@Row["AdmissionNO"].ToString()</td>
+                             <td>@Row["StudyLevel"].ToString()</td>
+                            <td>@Row["SessionName"].ToString()</td>
+                            <td>@Row["Status"].ToString()</td>
+                            <td>@Row["programName"].ToString()</td>
+                            <td>@Row["Qualify"].ToString()</td>
+                            <td class="">
+                                @{
+                        if (@Row["Qualify"].ToString() == "Yes")
+                        {
+                            if (@Row["Enroll"].ToString() =="") { 
+                            
+                            <a href="/student/EnrollmentStatus?admissionNo=@Row["AdmissionNO"].ToString()&sessionId=@Row["SessionId"].ToString()"><i class="fa fa-check text-success"></i></a>
+                            }
+                            else if (@Row["Enroll"].ToString() == "Yes")
+                            {
+                                @*<a href="/student/EnrollmentStatus?admissionNo=@Row["AdmissionNO"].ToString()&sessionId=@Row["SessionId"].ToString()">Genrate Id Card</a>*@
+    <a target="_blank" href="/student/StudentIdCard?StudentId=@Row["StudentID"].ToString()&SessionId=@Row["SessionID"].ToString()">Genrate Id Card</a>
+                            }
+                            else
+                            {
+                                <i>-</i>}
+                        }
+}
+
+                           </td>
+                        </tr>
+
+
+                    }
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+
+                    //throw;
+                }
+
+
+            }
+
+        </tbody>
+
+    </table>
+
+
+
+
+
+</body>
+

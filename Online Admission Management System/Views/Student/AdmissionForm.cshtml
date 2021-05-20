@@ -1,0 +1,206 @@
+﻿@{
+    ViewBag.Title = "Admission Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+
+<body>
+
+    @{
+        if (@Model.Rows[0]["SessionID"].ToString() == "1")
+        {
+            <h2>You Cannot Apply For Admission Because Currently Session is Closed</h2>
+            <h3>Visit Next Time...!</h3>
+        }
+        else
+        {
+            <h2>Admission Form</h2>
+            <div class="text-center"><span class="text-danger">@ViewBag.error</span></div>
+            <br />
+            <br />
+            <form action="#" method="post">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <span>Admission Number:</span>
+                    </div>
+                    <div class="col-sm-6">
+
+                        <span>You will get the Admission number after you apply for admission</span>
+
+
+
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        <span>Name:</span>
+                    </div>
+                    <div class="col-sm-6">
+                        <span>@Model.Rows[0]["Name"]</span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        <span>Session:</span>
+                    </div>
+                    <div class="col-sm-6">
+                        <span>@Model.Rows[0]["SessionName"]</span>
+                        <input type="text" name="SessionID" value="@Model.Rows[0]["SessionID"]" hidden />
+                    </div>
+                </div>
+                <br />
+                <h3>Educational Information</h3>
+                <br />
+                <div class="col-lg-4">@Html.ValidationMessage("m_school")@Html.ValidationMessage("m_roll")@Html.ValidationMessage("m_obtained")</div>
+                <br />
+                <div class="col-lg-4">@Html.ValidationMessage("m_total")@Html.ValidationMessage("m_passing")@Html.ValidationMessage("m_board")</div>
+                <br />
+                <div><h4>Matriculation</h4></div>
+                
+                <div class="row">
+                    <table border="1">
+
+                        <tr>
+                            <th>School Name</th>
+                            <th>Board RollNumber</th>
+                            <th>Obtained Marks</th>
+                            <th>Total Marks</th>
+                            <th>Passing Year</th>
+                            <th>Board</th>
+                        </tr>
+                        <tr>
+                            <td><input data-val="true" data-val-required="Scool Name is required" type="Text" name="m_school" value="@Model.Rows[0]["Matric_School"]" /></td>
+                            <td><input data-val="true" data-val-required="Roll Number is Required" type="Text" name="m_roll" value="@Model.Rows[0]["Matric_rollnumber"]" /></td>
+                            <td><input data-val="true" data-val-required="Enter Obtain Marks" type="Text" name="m_obtained" value="@Model.Rows[0]["Matric_obtained"]" /></td>
+                            <td><input data-val="true" data-val-required="Enter Total Marks" type="Text" name="m_total" value="@Model.Rows[0]["Matric_total"]" /></td>
+                            <td><input data-val="true" data-val-required="Enter Passing Year" type="Text" name="m_passing" value="@Model.Rows[0]["Matric_passingYear"]" /></td>
+                            <td><input data-val="true" data-val-required="En" type="Text" name="m_board" value="@Model.Rows[0]["Matric_board"]" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-lg-4">@Html.ValidationMessage("i_school")@Html.ValidationMessage("i_roll")@Html.ValidationMessage("i_obtained")</div>
+                <br />
+                <div class="col-lg-4">@Html.ValidationMessage("i_total")@Html.ValidationMessage("i_passing")@Html.ValidationMessage("i_board")</div>
+                <br />
+                <h4>Intermediate</h4>
+                <div class="row">
+                    <table border="1">
+
+                        <tr>
+                            <th>College Name</th>
+                            <th>Board RollNumber</th>
+                            <th>Obtained Marks</th>
+                            <th>Total Marks</th>
+                            <th>Passing Year</th>
+                            <th>Board</th>
+                        </tr>
+                        <tr>
+                            <td><input data-val="true" data-val-required="Enter College Name" type="Text" name="i_college" value="@Model.Rows[0]["Inter_college"]" /></td>
+                            <td><input data-val="true" data-val-required="Enter Roll Number" type="Text" name="i_roll" value="@Model.Rows[0]["Inter_rollnumber"]" /></td>
+                            <td><input data-val="true" data-val-required="Enter Obtain Marks" type="Text" name="i_obtained" value="@Model.Rows[0]["Inter_obtained"]" /></td>
+                            <td><input data-val="true" data-val-required="Enter Total Marks" type="Text" name="i_total" value="@Model.Rows[0]["Inter_total"]" /></td>
+                            <td><input data-val="true" data-val-required="Enter Passing Year" type="Text" name="i_passing" value="@Model.Rows[0]["Inter_passingYear"]" /></td>
+                            <td><input data-val="true" data-val-required="Enter board" type="Text" name="i_board" value="@Model.Rows[0]["Inter_board"]" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">  <h4>Graduation</h4> </div>
+                    <div class="col-sm-3">
+
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <table border="1">
+
+                        <tr>
+                            <th>College/University Name</th>
+                            <th>Board RollNumber</th>
+                            <th>Obtained Marks</th>
+                            <th>Total Marks</th>
+                            <th>Passing Year</th>
+                            <th>Board/University</th>
+
+                        </tr>
+                        <tr>
+                            <td><input type="Text" name="g_uni" value="@Model.Rows[0]["Gradu_Uni"]" /></td>
+                            <td><input type="Text" name="g_roll" value="@Model.Rows[0]["Gradu_rollnumber"]" /></td>
+                            <td><input type="Text" name="g_obtained" value="@Model.Rows[0]["Gradu_obtained"]" /></td>
+                            <td><input type="Text" name="g_total" value="@Model.Rows[0]["Gradu_total"]" /></td>
+                            <td><input type="Text" name="g_passing" value="@Model.Rows[0]["Gradu_passingYear"]" /></td>
+                            <td><input type="Text" name="g_board" value="@Model.Rows[0]["Gradu_board"]" /></td>
+
+                        </tr>
+                    </table>
+                </div>
+                <h3>Select Program</h3>
+
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <select class="input-sm form-control" name="programID" data-val="true" data-val-required="Province is Required">
+                            <option value="">Select Program</option>
+                            @{
+            try
+            {
+                foreach (var Row in Model.Rows)
+                {
+                    <option value="@Row["ProgramID"].ToString()">@Row["ProgramName"].ToString()</option>
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+                            }
+                        </select>
+                    </div>
+                    <div class="col-lg-4">
+                        <select class="input-sm form-control" name="StudyLevel" data-val="true" data-val-required="Study Level Is Required">
+                            <option value="">Select Study Level</option>
+                            <option selected value="Inter">InterMediate</option>
+                            <option value="Bachlor">Bachlor</option>
+
+                        </select>
+                    </div>
+
+
+
+
+
+
+                </div>
+                <br />
+
+                <br />
+                <input type="checkbox" id="condition" name="condition" checked value="1"><span>I Accept all Terms & Condition. To view terms and condition.To Veiw all Condition </span><a href="#">Click Here</a>
+                <br />
+                <br />
+                <br />
+                <div class="text-center">
+                    <input class="btn btn-success " type="submit" name="name" value="Apply" />
+                </div>
+
+            </form>
+        }
+    }
+
+    @section Validation{
+
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
+    }
+</body>
+
+</html>

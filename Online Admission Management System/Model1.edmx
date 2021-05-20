@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbUniSysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'dbUniSys.dbo.Tbl_AdmissionApplied' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Tbl_AdmissionApplied">
+          <Property Name="AdmissionNO" Type="int" />
+          <Property Name="StudentID" Type="int" />
+          <Property Name="SessionID" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="ProgramID" Type="varchar" MaxLength="50" />
+          <Property Name="LastDegreePercentage" Type="int" />
+          <Property Name="StudyLevel" Type="varchar" MaxLength="50" />
+          <Property Name="Qualify" Type="varchar" MaxLength="50" />
+          <Property Name="Enroll" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'dbUniSys.dbo.Tbl_District' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Tbl_District">
+          <Property Name="DistrictID" Type="int" />
+          <Property Name="DistrictName" Type="varchar" MaxLength="50" />
+          <Property Name="ProvinceName" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'dbUniSys.dbo.Tbl_MeritList' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Tbl_MeritList">
+          <Property Name="MeritListID" Type="varchar" MaxLength="50" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Session" Type="varchar" MaxLength="50" />
+          <Property Name="Province" Type="varchar" MaxLength="50" />
+          <Property Name="Program" Type="varchar" MaxLength="50" />
+          <Property Name="Seats" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'dbUniSys.dbo.Tbl_Notification' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Tbl_Notification">
+          <Property Name="NotificationID" Type="int" />
+          <Property Name="NotificationTitle" Type="varchar" MaxLength="50" />
+          <Property Name="NotificationDescription" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Priority" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="PublishedDate" Type="date" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'dbUniSys.dbo.Tbl_Program' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Tbl_Program">
+          <Property Name="ProgramID" Type="int" />
+          <Property Name="ProgramName" Type="varchar" MaxLength="50" />
+          <Property Name="StudyLevelReq" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'dbUniSys.dbo.Tbl_Session' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Tbl_Session">
+          <Property Name="SessionID" Type="int" />
+          <Property Name="SessionName" Type="varchar" MaxLength="50" />
+          <Property Name="SessionStatus" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <EntityType Name="Tbl_Student">
+          <Key>
+            <PropertyRef Name="Student_Id" />
+          </Key>
+          <Property Name="Student_Id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Father_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="Nationality" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="District" Type="varchar" MaxLength="100" />
+          <Property Name="Postal_Address" Type="varchar" MaxLength="100" />
+          <Property Name="Permanent_Address" Type="varchar" MaxLength="100" />
+          <Property Name="Phone_number" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile_Number" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Province" Type="varchar" MaxLength="50" />
+          <Property Name="Photo" Type="varchar" MaxLength="200" />
+          <Property Name="CNIC" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'dbUniSys.dbo.Tbl_StudentAdmissionList' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Tbl_StudentAdmissionList">
+          <Property Name="studentListID" Type="varchar" MaxLength="50" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Session" Type="varchar" MaxLength="50" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'dbUniSys.dbo.Tbl_StudentEducation' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Tbl_StudentEducation">
+          <Property Name="Student_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Matric_School" Type="varchar" MaxLength="50" />
+          <Property Name="Matric_rollnumber" Type="varchar" MaxLength="50" />
+          <Property Name="Matric_total" Type="varchar" MaxLength="50" />
+          <Property Name="Matric_obtained" Type="varchar" MaxLength="50" />
+          <Property Name="Matric_passingYear" Type="varchar" MaxLength="50" />
+          <Property Name="Matric_board" Type="varchar" MaxLength="50" />
+          <Property Name="Inter_college" Type="varchar" MaxLength="50" />
+          <Property Name="Inter_rollnumber" Type="varchar" MaxLength="50" />
+          <Property Name="Inter_total" Type="varchar" MaxLength="50" />
+          <Property Name="Inter_obtained" Type="varchar" MaxLength="50" />
+          <Property Name="Inter_passingYear" Type="varchar" MaxLength="50" />
+          <Property Name="Inter_board" Type="varchar" MaxLength="50" />
+          <Property Name="Gradu_Uni" Type="varchar" MaxLength="50" />
+          <Property Name="Gradu_rollnumber" Type="varchar" MaxLength="50" />
+          <Property Name="Gradu_total" Type="varchar" MaxLength="50" />
+          <Property Name="Gradu_obtained" Type="varchar" MaxLength="50" />
+          <Property Name="Gradu_passingYear" Type="varchar" MaxLength="50" />
+          <Property Name="Gradu_board" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <EntityType Name="Tbl_Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Role" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="dbUniSysModelStoreContainer">
+          <EntitySet Name="Tbl_Student" EntityType="Self.Tbl_Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Users" EntityType="Self.Tbl_Users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbUniSysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tbl_Student">
+          <Key>
+            <PropertyRef Name="Student_Id" />
+          </Key>
+          <Property Name="Student_Id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Father_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="District" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Postal_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Permanent_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CNIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="dbUniSysEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tbl_Student" EntityType="Self.Tbl_Student" />
+          <EntitySet Name="Tbl_Users" EntityType="Self.Tbl_Users" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbUniSysModelStoreContainer" CdmEntityContainer="dbUniSysEntities1">
+          <EntitySetMapping Name="Tbl_Student">
+            <EntityTypeMapping TypeName="dbUniSysModel.Tbl_Student">
+              <MappingFragment StoreEntitySet="Tbl_Student">
+                <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Father_Name" ColumnName="Father_Name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Postal_Address" ColumnName="Postal_Address" />
+                <ScalarProperty Name="Permanent_Address" ColumnName="Permanent_Address" />
+                <ScalarProperty Name="Phone_number" ColumnName="Phone_number" />
+                <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Users">
+            <EntityTypeMapping TypeName="dbUniSysModel.Tbl_Users">
+              <MappingFragment StoreEntitySet="Tbl_Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

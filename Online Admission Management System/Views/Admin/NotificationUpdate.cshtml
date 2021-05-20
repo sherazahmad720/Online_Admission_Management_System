@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "NotificationUpdate";
+    Layout = "~/Views/Shared/_layout_Admin.cshtml";
+}
+
+<h2>Update Notification</h2>
+<form action="/Admin/NotificationUpdate" method="post">
+    <input type="text" name="NotificationID" value="@Model.Rows[0]["NotificationID"].ToString()"  hidden/>
+
+    <div class="row">
+        <div class="col-lg-6 text-right"><span class="">@ViewBag.notification</span></div>
+
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-4 text-right"><span class="input-sm">Title:</span></div>
+        <div class="col-lg-4">
+            <input class="form-control input-sm" type="text" name="Title" placeholder="Enter Notification Title Here" value="@Model.Rows[0]["NotificationTitle"]"/>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-4 text-right"><span class="input-sm">description:</span></div>
+        <div class="col-lg-4">
+            <textarea  class="form-control input-sm span6" rows="3" placeholder="Enter Notification Description Here" name="Description" >"@Model.Rows[0]["NotificationDescription"]"</textarea>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-4 text-right"><span class="input-sm">Priority</span></div>
+        <div class="col-lg-4">
+
+            <select class="input-sm form-control" name="priority">
+                <option value="@Model.Rows[0]["Priority"]" selected>@Model.Rows[0]["Priority"]</option>
+                <option value="Important">Important</option>
+                <option value="Pinned">Pinned</option>
+                <option value="Normal">Normal</option>
+            </select>
+        </div>
+
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-4 text-right"><span class="input-sm">Status:</span></div>
+        <div class="col-lg-4">
+            @{
+                if (Model.Rows[0]["Status"].ToString()=="Published")
+                {
+                    <label class="radio-inline"> <input type="radio" name="Status" value="Published" checked />Published </label>
+                    <label class="radio-inline"> <input type="radio" name="Status" value="Un Published" />Un Published </label>
+                }
+                else
+                {
+                    <label class="radio-inline"> <input type="radio" name="Status" value="Published"  />Published </label>
+                    <label class="radio-inline"> <input type="radio" name="Status" value="Un Published" checked />Un Published </label>
+                }
+}
+            @*<label class="radio-inline"> <input type="radio" name="Status" value="Published" checked />Published </label>
+            <label class="radio-inline"> <input type="radio" name="Status" value="Un Published" />Un Published </label>*@
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="text-center"><input class="input-lg btn-success " type="submit" name="AdmitBtn" value="Update" /></div>
+    </div>
+
+
+
+
+
+</form>
+

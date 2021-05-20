@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "NotificationList";
+    Layout = "~/Views/Shared/_layout_Admin.cshtml";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<h2>Notification List</h2>
+<a class="btn btn-warning" href="/Admin/NotificationForm"><b>Create a Notification</b> </a>
+<br />
+<br />
+
+<body>
+    <div class="text-center"> @ViewBag.EmailError @ViewBag.delete @ViewBag.update</div>
+    <table class="table table-striped" border="1">
+        <thead>
+            <tr>
+                <th>Notification ID</th>
+                <th>Notification Title</th>
+                
+                <th>Priority</th>
+                <th>Created Date</th>
+                <th>Published Date</th>
+                <th>Status</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>View</th>
+                <th>Change Status</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @{
+                try
+                {
+                    foreach (var Row in Model.Rows)
+                    {
+                        <tr>
+
+                            <td>@Row["NotificationId"].ToString()</td>
+                            <td>@Row["NotificationTitle"].ToString()</td>
+                            <td>@Row["Priority"].ToString()</td>
+                            <td>@Row["CreatedDate"].ToString("dd/MM/yyyy")</td>
+                            <td>@Row["PublishedDate"].ToString("dd/MM/yyyy")</td>
+                            <td>@Row["Status"].ToString()</td>
+                            <td><a href="/Admin/NotificationUpdate?id=@Row[0].ToString()"><i class="fa fa-edit"></i></a></td>
+                       
+                            <td><a href="/Admin/NotificationDelete?id=@Row[0].ToString()"><i class="fa fa-trash"></i></a></td>
+                            <td><a href="/Admin/NotificationView/@Row[0].ToString()"><i class="fa fa-eye"></i></a></td>
+                            <td class="text-center"><a href="/Admin/NotificationUpdateStatus/@Row[0].ToString()"><i class="glyphicon glyphicon-refresh"></i></a></td>
+                        </tr>
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    //throw;
+                }
+
+
+            }
+
+        </tbody>
+
+    </table>
+</body>
+

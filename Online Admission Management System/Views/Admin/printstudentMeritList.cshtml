@@ -1,0 +1,125 @@
+﻿@using System.Data;
+@Model
+@{
+    ViewBag.Title = "Student Merit List";
+    Layout = "~/Views/Shared/_layout_Admin.cshtml";
+}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script>
+    function printContent(el) {
+        var restorepage = document.body.innerHTML;
+        var printcontent = document.getElementById(el).innerHTML;
+        document.body.innerHTML = printcontent;
+        window.print();
+        document.body.innerHTML = restorepage;
+    }
+    </script>
+</head>
+<body>
+    <br />
+    <div class="text-center"><button onclick="printContent('report')">Print</button></div>
+    <br />
+    <div id="report">
+        <h2>Student Merit List </h2>
+        <div class="row">
+            <div class="col-lg-3"><h4>Session : @ViewBag.session</h4></div>
+            <div class="col-lg-3"><h4>Title : @ViewBag.title</h4></div>
+            <div class="col-lg-3"><h4>Province : @ViewBag.province</h4></div>
+            <div class="col-lg-3"><h4>Program : @ViewBag.program</h4></div>
+        </div>
+        <br />
+        <div class="text-center"> @ViewBag.EmailError @ViewBag.delete @ViewBag.update</div>
+        <table class="table table-striped" border="1">
+            <thead>
+                <tr>
+                    <th>Sr#</th>
+                    <th>Admission No.</th>
+                    <th>Student Name</th>
+                    <th>Father Name</th>
+                    <th>Gender</th>
+                    <th>District</th>
+                    @{
+                        if (@ViewBag.province == "All")
+                        {
+                            <th>Province</th>
+                        }
+                        if (@ViewBag.program == "All")
+                        {
+                            <th>Program</th>
+                        }
+                    }
+
+
+                    <th>Percentage</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @{
+                    try
+                    {
+                        int i = 1;
+                        foreach (var Row in Model.Rows)
+                        {
+
+
+                            <tr>
+                                <td>@i</td>
+                                <td>@Row["AdmissionNO"].ToString()</td>
+                                <td>@Row["Name"].ToString()</td>
+                                <td>@Row["Father_Name"].ToString()</td>
+                                <td>@Row["Gender"].ToString()</td>
+                                <td>@Row["District"].ToString()</td>
+
+                                @if (@ViewBag.province == "All")
+                                {
+                                    <td>@Row["Province"].ToString()</td>
+                                }
+                                @if (@ViewBag.program == "All")
+                                {
+                                    <td>@Row["ProgramName"].ToString()</td>
+                                }
+
+
+
+                                <td>@Row["LastDegreePercentage"].ToString()%</td>
+
+
+                            </tr>
+
+                                i = i + 1;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        //throw;
+                    }
+
+
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+</body>
+</html>
+
+<script>
+    function Edit(id) {
+    }
+
+
+    function View(id) {
+        alert(id);
+    }
+</script>

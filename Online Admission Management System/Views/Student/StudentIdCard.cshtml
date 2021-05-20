@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "StudentIdCard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>
+        Student Id Card
+    </title>
+    
+    <style >
+
+   body{
+margin: 0px;
+padding: 0px;
+background: #f1f1f1;
+font-family: arial;
+box-sizing: border-box;
+}
+   .uniname{
+       padding-top:10px;
+   }
+.card-container{
+width: 300px;
+height: 430px;
+background: #FFF;
+border-radius: 6px;
+
+top: 50%;
+left: 50%;
+transform:translate(0,30%);
+box-shadow: 0px 1px 10px 1px #000;
+
+
+}
+.upper-container{
+height: 100px;
+background: #7F00FF;
+}
+.image-container{
+background: white;
+width: 130px;
+height: 130px;
+border-radius: 50%;
+
+transform: translate(85px,1px);
+}
+.image-container img{
+width: 130px;
+height: 130px;
+border-radius: 50%;
+}
+.lower-container{
+height: 280px;
+background: #FFF;
+padding: 20px;
+padding-top: 70px;
+text-align: center;
+}
+.lower-container h5, h4{
+box-sizing: border-box;
+line-height: .6;
+font-weight: lighter;
+}
+.lower-container h5{
+color: #7F00FF;
+opacity: .6;
+font-weight: bold;
+}
+.lower-container p{
+font-size: 16px;
+color: gray;
+margin-bottom: 30px;
+}
+
+
+</style>
+   
+   
+</head>
+<body>
+    <div id="card1" class="card-container">
+        <div class="upper-container">
+            <p class="text-center uniname">Star University Of Pakistan</p>
+            <div class="image-container">
+                <img src="@Model.Rows[0]["Photo"].ToString()" />
+            </div>
+        </div>
+        <div class="lower-container">
+            <div class="row">
+                <div class="col-lg-12 text-left" ><h5>Name :@Model.Rows[0]["Name"].ToString()</h5></div>
+               
+               
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-left"><h5>Father Name :@Model.Rows[0]["Father_Name"].ToString()</h5></div>
+              
+
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-left" ><h5>DOB :@Model.Rows[0]["DOB"].ToString("dd,MM,yyyy")</h5></div>
+               
+
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-left"><h5>Session :@Model.Rows[0]["SessionName"].ToString()</h5></div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-left"><h5>Mobile Number:@Model.Rows[0]["Mobile_Number"].ToString()</h5></div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-left"><h5>CNIC :@Model.Rows[0]["CNIC"].ToString()</h5></div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-left"><h5>District :@Model.Rows[0]["District"].ToString()</h5></div>
+
+
+            </div>
+
+           
+
+            
+            
+        </div>
+    </div>
+    <br />
+    <br />
+  
+</body>
+</html>
+

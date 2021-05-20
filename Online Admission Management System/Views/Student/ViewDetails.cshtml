@@ -1,0 +1,207 @@
+﻿@using System.Data;
+@Model
+@{
+    ViewBag.Title = "Student DATA";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Student Profile</h2>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Admission</title>
+</head>
+<body>
+
+
+    <form action="/Admin/Admission_Update" method="post" class="">
+
+        <div class="row">
+            <div class="row"><h4>   Personal Information</h4>  </div>
+            <div class="col-lg-6">
+              
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Full Name :</span></div>
+                    <div class="col-lg-4">@Model.Rows[0]["Name"].ToString()</div>
+                    <div class="col-lg-4"></div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Father Name :</span></div>
+                    <div class="col-lg-4">@Model.Rows[0]["Father_Name"].ToString()</div>
+                    <div class="col-lg-4"></div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Select Gender :</span></div>
+                    <div class="col-lg-4">
+                        @Model.Rows[0][4].ToString()
+
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-lg-4 text-right"><span class="input-sm">Date Of Birth :</span></div>
+                <div class="col-lg-4">@Model.Rows[0]["DOB"].ToString("dd-MMM-yyyy")</div>
+                <div class="col-lg-4"></div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-lg-4 text-right"><span class="input-sm">Nationality :</span></div>
+                <div class="col-lg-4">@Model.Rows[0]["Nationality"].ToString()</div>
+                <div class="col-lg-4"></div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-lg-4 text-right"><span class="input-sm">Countary :</span></div>
+                <div class="col-lg-4">
+                    @Model.Rows[0]["Country"].ToString()
+
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-4 text-right"><span class="input-sm">District :</span></div>
+            <div class="col-lg-4">@Model.Rows[0]["District"].ToString()</div>
+            <div class="col-lg-4"></div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-4 text-right"><span class="input-sm">Province :</span></div>
+            <div class="col-lg-4">
+                @Model.Rows[0]["Province"].ToString()
+
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+                <br />
+               
+
+    </div>
+    <div class="col-lg-6">
+
+        
+        <div class="row">
+            <div class="col-lg-4 text-right"><span class="input-sm">Picture :</span></div>
+            <div class="col-lg-4"><img class="img-thumbnail" src="@Model.Rows[0]["Photo"].ToString()" alt="Profile Picture" /></div>
+            <div class="col-lg-4"></div>
+        </div>
+        
+        <br />
+        <div class="row">
+            <div class="col-lg-4 text-right"><span class="input-sm">Phone Number :</span></div>
+            <div class="col-lg-4">@Model.Rows[0]["Phone_number"].ToString()</div>
+            <div class="col-lg-4"></div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-4 text-right"><span class="input-sm">Mobile Number :</span></div>
+            <div class="col-lg-4">@Model.Rows[0]["Mobile_number"].ToString()</div>
+            <div class="col-lg-4"></div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-4 text-right"><span class="input-sm">Email :</span></div>
+            <div class="col-lg-4">@Model.Rows[0]["Email"].ToString()</div>
+            <div class="col-lg-4"></div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-4 text-right"><span class="input-sm">Postal Address :</span></div>
+            <div class="col-lg-4">@Model.Rows[0]["Postal_Address"].ToString()</div>
+            <div class="col-lg-4"></div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-4 text-right"><span class="input-sm">Permanent Address :</span></div>
+            <div class="col-lg-4">@Model.Rows[0]["permanent_Address"].ToString()</div>
+            <div class="col-lg-4"></div>
+        </div>
+        <br />
+    </div>
+            </div>
+        <div class="row">
+            <div class="row"><h4>Educationala Information</h4></div>
+            <br />  
+            <h4>Matriculation</h4>
+            <div class="row">
+                <table border="1" class="table table-striped">
+
+                    <tr>
+                        <th>School Name</th>
+                        <th>Board RollNumber</th>
+                        <th>Obtained Marks</th>
+                        <th>Total Marks</th>
+                        <th>Passing Year</th>
+                        <th>Board</th>
+                    </tr>
+                    <tr>
+                        <td>@Model.Rows[0]["Matric_School"]</td>
+                        <td>@Model.Rows[0]["Matric_rollnumber"]</td>
+                        <td>@Model.Rows[0]["Matric_obtained"]</td>
+                        <td>@Model.Rows[0]["Matric_total"]</td>
+                        <td>@Model.Rows[0]["Matric_passingYear"]</td>
+                        <td>@Model.Rows[0]["Matric_board"]</td>
+                    </tr>
+                </table>
+            </div>
+            <h4>Intermediate</h4>
+            <div class="row">
+                <table border="1" class="table table-striped">
+
+                    <tr>
+                        <th>College Name</th>
+                        <th>Board RollNumber</th>
+                        <th>Obtained Marks</th>
+                        <th>Total Marks</th>
+                        <th>Passing Year</th>
+                        <th>Board</th>
+                    </tr>
+                    <tr>
+                        <td>@Model.Rows[0]["Inter_college"]</td>
+                        <td>@Model.Rows[0]["Inter_rollnumber"]</td>
+                        <td>@Model.Rows[0]["Inter_obtained"]</td>
+                        <td>@Model.Rows[0]["Inter_total"]</td>
+                        <td>@Model.Rows[0]["Inter_passingYear"]</td>
+                        <td>@Model.Rows[0]["Inter_board"]</td>
+                    </tr>
+                </table>
+            </div>
+            <br />
+          
+
+            <h4>Graduation</h4>
+            <div class="row">
+                <table border="1" class="table table-striped">
+
+                    <tr>
+                        <th>College/University Name</th>
+                        <th>Board RollNumber</th>
+                        <th>Obtained Marks</th>
+                        <th>Total Marks</th>
+                        <th>Passing Year</th>
+                        <th>Board/University</th>
+
+                    </tr>
+                    <tr>
+                        <td>@Model.Rows[0]["Gradu_Uni"]</td>
+                        <td>@Model.Rows[0]["Gradu_rollnumber"]</td>
+                        <td>@Model.Rows[0]["Gradu_obtained"]</td>
+                        <td>@Model.Rows[0]["Gradu_total"]</td>
+                        <td>@Model.Rows[0]["Gradu_passingYear"]</td>
+                        <td>@Model.Rows[0]["Gradu_board"]</td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+
+
+
+</form>
+
+</body>
+</html>

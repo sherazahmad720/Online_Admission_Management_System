@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "StudentMeritList";
+    Layout = "~/Views/Shared/_layout_Admin.cshtml";
+}
+
+<h2>OverallList</h2>
+
+<body>
+    <form action="/Admin/CreateMeritList" method="post">
+        <div class="row">
+            <div class="col-lg-4">
+                <label>Enter Title</label>
+            </div>
+            <div class="col-lg-4">
+                <input data-val="true" data-val-required="Enter Title Please" type="text" name="Title" value=" " />
+            </div>
+            <div class="col-lg-4">
+                @Html.ValidationMessage("Title")
+            </div>
+
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-4">
+                <label>Enter Description</label>
+            </div>
+            <div  class="col-lg-4">
+                <input data-val="true" data-val-required="Enter Description please" type="text" name="Description" value=" " />
+            </div>
+            <div  class="col-lg-4">
+                @Html.ValidationMessage("Description")
+            </div>
+        </div>
+        <br />
+        <div class="row">
+
+            <div class="col-lg-4">Select Session</div>
+
+            <div class="col-lg-4">
+                <select name="Session">
+
+                    @try
+                    {
+                        foreach (var Row in Model.Tables["Table1"].Rows)
+                        {
+
+
+                            <option value="@Row["SessionName"].ToString()">@Row["SessionName"].ToString()</option>
+
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+
+
+                </select>
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-4">Select Province</div>
+            <div class="col-lg-4">
+                <select name="Province">
+                    <option value="All">All Over Pakistan</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Sindh">Sindh</option>
+                    <option value="Blochistan">Blochistan</option>
+                    <option value="KPK">KPK</option>
+                    <option value="Gilgat">Gilgat</option>
+                </select>
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+
+            <div class="col-lg-4">Select Program</div>
+
+            <div class="col-lg-4">
+                <select name="Program">
+                    <option value="All">All Programs</option>
+                    @try
+                    {
+                        foreach (var Row in Model.Tables["Table2"].Rows)
+                        {
+
+
+                            <option value="@Row["ProgramName"].ToString()">@Row["ProgramName"].ToString()</option>
+
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+
+
+                </select>
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-4">
+                <label>Available Seaats</label>
+            </div>
+            <div class="col-lg-4">
+                <input data-val="true" data-val-required="Enter Available Seates" type="text" name="Seats" value=" " />
+            </div>
+            <div class="col-lg-4">
+              @Html.ValidationMessage("Seats")
+            </div>
+
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-3"><input class="input-lg  btn-info" type="submit" name="Submitbtn" value="Create" /></div>
+        </div>
+        <div class="col-lg-3 "><span class="text-success">@ViewBag.Update</span></div>
+    </form>
+    @section Validation{
+
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
+    }
+</body>

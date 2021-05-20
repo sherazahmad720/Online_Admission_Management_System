@@ -1,0 +1,78 @@
+﻿@using System.Data;
+@Model
+@{
+    ViewBag.Title = "Student Merit List";
+    Layout = "~/Views/Shared/_layout_Home.cshtml";
+}
+
+<h2>Student Merit Lists</h2>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="text-center"> @ViewBag.EmailError @ViewBag.delete @ViewBag.update</div>
+    <table class="table table-striped" border="1">
+        <thead>
+            <tr>
+                <th>Sr#</th>
+                <th>Title</th>
+                <th>Description</th>
+               
+                <th>Session</th>
+                <th>Province</th>
+                <th>Program</th>
+              
+                <th>Print</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+
+            @{
+                try
+                {
+                    int i=1;
+                    foreach (var Row in Model.Rows)
+                    {
+                        if (@Row["Status"].ToString()=="Published")
+                        {
+                            
+                        
+                        <tr>
+
+                            <td>@i</td>
+                            <td>@Row["Title"].ToString()</td>
+                            <td>@Row["Description"].ToString()</td>
+                            
+                            <td>@Row["Session"].ToString()</td>
+                            <td>@Row["Province"].ToString()</td>
+                            <td>@Row["Program"].ToString()</td>
+                         
+                            <td class="text-center"><a target="_blank" href="/admin/printstudentMeritList?id=@Row["MeritListID"].ToString()&Title=@Row["Title"].ToString()&Session=@Row["Session"].ToString()&Province=@Row["Province"].ToString()&Program=@Row["Program"].ToString()"><i class="glyphicon glyphicon-print"></i></a></td>
+                           
+
+                        </tr>
+                        }
+                        i = i + 1;
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    //throw;
+                }
+
+
+            }
+
+        </tbody>
+
+    </table>
+</body>
+</html>
+

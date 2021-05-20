@@ -1,0 +1,194 @@
+﻿@Model
+@using System.Data;
+@using Online_Admission_Management_System.Controllers
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_layout_Home.cshtml";
+}
+
+<h2>Registration Form</h2>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Admission Form</title>
+</head>
+<body>
+    <div class="text-center"> <h3>Personal Information</h3></div>
+    <br />
+    <form  method="post" class="" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Full Name</span></div>
+                    <div class="col-lg-4"><input class="input-sm form-control" data-val="true" maxlength="20" data-val-required="Full Name is Required" type="text" name="Name" placeholder="Enter Your Full Name Here" /></div>
+                    <div class="col-lg-4">@Html.ValidationMessage("Name")</div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Date Of Birth</span></div>
+                    <div class="col-lg-4"><input class="input-sm form-control" data-val=" true" data-val-required="Please Select Daate of Birth " type="date" name="DOB" placeholder="Select DOB" /></div>
+                    <div class="col-lg-4">@Html.ValidationMessage("DOB")</div>
+                </div>
+
+
+
+
+                <br />
+
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm"> CNIC</span></div>
+                    <div class="col-lg-4"><input class="input-sm form-control" data-val="true" data-val-required="CNIC is Required" type="text" name="CNIC" placeholder="14 digit CNIC" /></div>
+                    <div class="col-lg-4">@Html.ValidationMessage("CNIC")</div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Postal Address</span></div>
+                    <div class="col-lg-4"><input class="input-sm form-control" data-val="true" data-val-required="Postal Address is Required" type="text" name="Postal_Address" placeholder="Postal Address" /></div>
+                    <div class="col-lg-4">@Html.ValidationMessage("Postal_Address")</div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm " data-val="true" data-val-required="Province is Required">Province</span></div>
+                    <div class="col-lg-4">
+                        <select class="input-sm form-control" name="Province">
+                            <option value="_" selected>Select Province</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Sindh">Sindh</option>
+                            <option value="Blochistan">Blochistan</option>
+                            <option value="KPK">KPK</option>
+                            <option value="Gilgat">Gilgat</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4">@Html.ValidationMessage("Provine")</div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Countary</span></div>
+                    <div class="col-lg-4">
+                        <select class="input-sm form-control" name="Country">
+                            <option value="Pakistan" selected>Pakistan</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4"></div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Phone Number</span></div>
+                    <div class="col-lg-4"><input class="input-sm form-control" type="text" name="Phone_Number" placeholder="Phone Number" /></div>
+                    <div class="col-lg-4"></div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm ">Email</span></div>
+                    <div class="col-lg-4"><input class="input-sm form-control" data-val="true" data-val-required="Email is Required" ,data-val-email="Invalid Email" type="email" name="Email" placeholder="Email" /></div>
+                    <div class="col-lg-4 text-warning">@Html.ValidationMessage("Email")<font class="text-danger">@ViewBag.EmailError</font></div>
+                </div>
+                <br />
+
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Father Name</span></div>
+                    <div class="col-lg-4"><input class="input-sm form-control" data-val="true" data-val-required="Father Name is Required" type="text" name="FatherName" placeholder="Enter Your Father Name Here" /></div>
+                    <div class="col-lg-4">@Html.ValidationMessage("FatherName")</div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm ">Select Gender</span></div>
+                    <div class="col-lg-4">
+                        <label class="radio-inline"> <input type="radio" name="Gender" value="Male" checked />Male</label>
+                        <label class="radio-inline"> <input type="radio" name="Gender" value="Female" />Female </label>
+
+                    </div>
+                    <div class="col-lg-4">@Html.ValidationMessage("Gender")</div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Upload Your Photo</span></div>
+                    <div class="col-lg-4"><input class="input-sm form-control" type="file" accept="image/*.jpeg" required name="Photo" placeholder="Enter Your Father Name Here" id="FileUpload" onload="" /></div>
+                    <div class="col-lg-4"><font class="text-danger">@ViewBag.photoError</font></div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Permanent Address</span></div>
+                    <div class="col-lg-4"><input class="input-sm form-control" type="text" name="Permanent_Address" placeholder="Permanent Address" /></div>
+                    <div class="col-lg-4"></div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Domicile District</span></div>
+                    <div class="col-lg-4">
+                        <select class="input-sm form-control" name="District" data-val="true" data-val-required="Province is Required">
+                            <option value="">Select District</option>
+                            @{
+                                try
+                                {
+                                    foreach (var Row in Model.Rows)
+                                    {
+                                        <option value="@Row["DistrictName"].ToString()">@Row["DistrictName"].ToString()</option>
+                                    }
+                                }
+                                catch (Exception)
+                                {
+                                    throw;
+                                }
+                            }
+                        </select>
+                    </div>
+                  
+                    <div class="col-lg-4">@Html.ValidationMessage("District")</div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Nationality</span></div>
+                    <div class="col-lg-4"><input class="input-sm form-control" data-val="true" data-val-required="Nationality is Required" type="text" name="Nationality" placeholder="Nationality" /></div>
+                    <div class="col-lg-4">@Html.ValidationMessage("Nationality")</div>
+                </div>
+                <br />
+
+
+
+
+
+
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm">Mobile Number</span></div>
+                    <div class="col-lg-4">@Html.TextBox("Mobile_Number", null, new { @class = "input-sm form-control", data_val = "true", data_val_required = "Mobile number is Required", data_val_regex_pattern = "^[0-9]{11}$", data_val_regex = "Invalid Contact Number" })</div>
+
+                    <div class="col-lg-4">@Html.ValidationMessage("Mobile_Number")</div>
+                </div>
+
+
+
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 text-right"><span class="input-sm ">Password</span></div>
+                    <div class="col-lg-4"><input class="input-sm form-control" data-val="true" data-val-required="Password is Required" ,data-val-regex-pattern="^[0-9]{11}" type="password" name="Password" placeholder="Password" /></div>
+                    <div class="col-lg-4">@Html.ValidationMessage("Password")</div>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+        <div class="text-center"><input class="input-lg btn-success " type="submit" name="AdmitBtn" value="Apply" /></div>
+    </form>
+    @section Validation{
+
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
+    }
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+﻿@using System.Data;
+@Model
+@{
+    ViewBag.Title = "StudentList";
+    Layout = "~/Views/Shared/_layout_Admin.cshtml";
+}
+
+<h2>StudentList</h2>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="text-center"> @ViewBag.EmailError @ViewBag.delete @ViewBag.update</div>
+    <table class="table table-striped" border="1">
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Father Name</th>
+                <th>Gender</th>
+                <th>Province</th>
+                <th>DOB</th>
+                <th>Edit</th>
+               
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            @{
+                try
+                {
+                    foreach (var Row in Model.Rows)
+                    {
+                        <tr>
+
+                            <td>@Row["Student_Id"].ToString()</td>
+                            <td>@Row["Name"].ToString()</td>
+                            <td>@Row["Father_Name"].ToString()</td>
+                            <td>@Row["Gender"].ToString()</td>
+                            <td>@Row["Province"].ToString()</td>
+                            <td>@Row["DOB"].ToString("dd-MM-yyyy")</td>
+                            <td><a href="/Admin/StudentProfile?id=@Row[0].ToString()&message=suc"><i class="fa fa-edit"></i></a></td>
+                           
+                            <td><a href="/Admin/StudentView/@Row[0].ToString()"><i class="fa fa-eye"></i></a></td>
+                        </tr>
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    //throw;
+                }
+
+
+            }
+
+        </tbody>
+
+    </table>
+</body>
+</html>
+
+<script>
+    function Edit(id) {
+    }
+   
+    
+    function View(id) {
+        alert(id);
+    }
+</script>

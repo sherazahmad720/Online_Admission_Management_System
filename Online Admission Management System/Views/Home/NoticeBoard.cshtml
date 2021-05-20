@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "NoticeBoard";
+    Layout = "~/Views/Shared/_Layout_Home.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+
+
+<body>
+    <h2>Notice Board</h2>
+
+    <table class="table table-striped" border="1">
+        <thead>
+            <tr>
+
+                <th>Notifications</th>
+               
+
+                <th>Published Date</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @{
+                try
+                {
+                    foreach (var Row in Model.Rows)
+                    {
+                        if (@Row["priority"].ToString() == "pinned")
+                        {
+                            <tr>
+                                <td><a href="/Home/NoticeView/@Row[0].ToString()">@Row["NotificationTitle"].ToString()</a>  </td>
+                                
+
+                                <td>@Row["PublishedDate"].ToString("dd/MM/yyyy")</td>
+                            </tr>
+
+                        }
+
+                    }
+
+                    foreach (var Row in Model.Rows)
+                    {
+                        if (@Row["priority"].ToString() != "pinned")
+                        {
+                            <tr class="table-condensed">
+                                <td> <a href="/Home/NoticeView/@Row[0].ToString()">@Row["NotificationTitle"].ToString()</a> </td>
+                                    
+                                
+                               
+                                
+                                
+
+                                <td>@Row["PublishedDate"].ToString("dd/MM/yyyy")</td>
+                            </tr>
+
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    //throw;
+                }
+
+
+}
+
+        </tbody>
+
+    </table>
+   
+  
+   
+
+
+</body>
+</html>
